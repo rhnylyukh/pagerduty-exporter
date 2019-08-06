@@ -106,6 +106,7 @@ func (m *MetricsCollectorIncident) Collect(ctx context.Context, callback chan<- 
 					"incidentID": incident.ID,
 					"userID":     acknowledgement.Acknowledger.ID,
 					"time":       createdAt.Format(opts.PagerDutyIncidentTimeFormat),
+					"incidentNumber": uintToString(incident.IncidentNumber),
 					"type":       "acknowledgement",
 				}, createdAt)
 			}
@@ -117,6 +118,7 @@ func (m *MetricsCollectorIncident) Collect(ctx context.Context, callback chan<- 
 					"incidentID": incident.ID,
 					"userID":     assignment.Assignee.ID,
 					"time":       createdAt.Format(opts.PagerDutyIncidentTimeFormat),
+					"incidentNumber": uintToString(incident.IncidentNumber),
 					"type":       "assignment",
 				}, createdAt)
 			}
@@ -127,6 +129,7 @@ func (m *MetricsCollectorIncident) Collect(ctx context.Context, callback chan<- 
 				"incidentID": incident.ID,
 				"userID":     incident.LastStatusChangeBy.ID,
 				"time":       changedAt.Format(opts.PagerDutyIncidentTimeFormat),
+				"incidentNumber": uintToString(incident.IncidentNumber),
 				"type":       "lastChange",
 			}, changedAt)
 		}
