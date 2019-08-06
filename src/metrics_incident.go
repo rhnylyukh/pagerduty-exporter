@@ -46,6 +46,7 @@ func (m *MetricsCollectorIncident) Setup(collector *CollectorGeneral) {
 		},
 		[]string{
 			"incidentID",
+			"incidentNumber"
 			"userID",
 			"time",
 			"type",
